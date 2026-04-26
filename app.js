@@ -2690,7 +2690,7 @@ function summarizeDifferences(leftPages, rightPages) {
   }
 
   const lines = [
-    "FluxPDF Comparison Report",
+    "XtreamPDF Comparison Report",
     `First document pages: ${leftPages.length}`,
     `Second document pages: ${rightPages.length}`,
     `Changed pages: ${changedPages.length}`,
