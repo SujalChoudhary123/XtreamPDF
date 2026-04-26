@@ -6,7 +6,7 @@ const { PDFDocument, StandardFonts, degrees, rgb } = PDFLib;
 const { jsPDF } = window.jspdf;
 const BACKEND_CONFIG = {
   enabled: true,
-  apiBaseUrl: "http://localhost:4000/api"
+  apiBaseUrl: "https://document-backend-5ick.onrender.com/api"
 };
 
 const toolRegistry = [
