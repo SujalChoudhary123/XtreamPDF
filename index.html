@@ -6,8 +6,9 @@
   <title>XtreamPDF</title>
   <meta
     name="description"
-    content="XtreamPDF is a stylish all-in-one PDF editor with free browser-based tools for editing, merging, converting, signing, and exporting documents."
+    content="XtreamPDF is a clean browser-based PDF editor for merging, splitting, converting, signing, and exporting documents."
   >
+  <link rel="icon" type="image/png" href="./logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -16,32 +17,112 @@
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <a class="brand" href="#home">
-        <span class="brand-mark">X</span>
-        <span>
-          <strong>XtreamPDF</strong>
-          <small>Fast document studio</small>
-        </span>
+      <a class="brand" href="#home" aria-label="XtreamPDF home">
+        <img class="brand-logo" src="./logo.png" alt="XtreamPDF logo">
       </a>
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary">
+        <a href="#home">Home</a>
         <a href="#tools">Tools</a>
         <a href="#workspace">Workspace</a>
       </nav>
-      <a class="nav-cta" href="#workspace">Launch XtreamPDF</a>
+      <a class="nav-cta" href="#workspace">Start Now</a>
     </header>
 
     <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Simple. Fast. Professional.</p>
+          <h1>Your complete PDF workspace in one clean interface.</h1>
+          <p class="hero-text">
+            XtreamPDF helps you edit, merge, split, convert, sign, and export documents
+            in a polished browser-first experience that matches your brand.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#workspace">Open Workspace</a>
+            <a class="button button-secondary" href="#tools">See All Tools</a>
+          </div>
+          <div class="hero-stats" aria-label="Highlights">
+            <div>
+              <strong>20+</strong>
+              <span>Practical PDF tools</span>
+            </div>
+            <div>
+              <strong>Fast</strong>
+              <span>Built for quick workflows</span>
+            </div>
+            <div>
+              <strong>Clean</strong>
+              <span>Focused on usability</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-preview">
+          <div class="preview-window">
+            <div class="preview-window-top">
+              <span class="preview-dot"></span>
+              <span class="preview-dot"></span>
+              <span class="preview-dot"></span>
+            </div>
+            <div class="preview-badge">
+              <img class="preview-logo" src="./logo.png" alt="XtreamPDF logo">
+            </div>
+            <div class="preview-list">
+              <div class="mini-card">
+                <strong>Merge & organize</strong>
+                <p>Combine, reorder, rotate, and manage pages with less friction.</p>
+              </div>
+              <div class="mini-card">
+                <strong>Edit & annotate</strong>
+                <p>Add text, signatures, watermarks, and clean export-ready changes.</p>
+              </div>
+              <div class="mini-card">
+                <strong>Convert & export</strong>
+                <p>Move between PDF, image, HTML, and Word workflows in one place.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quick-features">
+        <article class="quick-feature">
+          <p class="eyebrow">Focused Layout</p>
+          <h3>Simple structure that feels professional</h3>
+          <p>The page is organized into a clear hero, tools area, and workspace so users always know where to go next.</p>
+        </article>
+        <article class="quick-feature">
+          <p class="eyebrow">Brand Match</p>
+          <h3>Designed around your logo</h3>
+          <p>The interface uses a clean red, black, and white style so the website feels connected to XtreamPDF.</p>
+        </article>
+        <article class="quick-feature">
+          <p class="eyebrow">Practical Tools</p>
+          <h3>Ready for everyday PDF tasks</h3>
+          <p>Choose a tool, upload files, preview the result, and export without jumping across disconnected screens.</p>
+        </article>
+      </section>
+
+      <section class="catalog catalog-top" id="tools">
+        <div class="section-heading">
+          <p class="eyebrow">Tool Library</p>
+          <h2>Choose the tool you need</h2>
+          <p>Every workflow is grouped into one simple tool grid, then continues directly into the workspace below.</p>
+        </div>
+        <div class="tool-grid" id="tool-grid"></div>
+      </section>
+
       <section class="workspace" id="workspace">
         <div class="section-heading">
-          <p class="eyebrow">Xtream Workspace</p>
+          <p class="eyebrow">Workspace</p>
           <h2 class="workspace-title">
-            <span>Upload.</span>
-            <span class="workspace-title-accent">Edit. Export.</span>
+            <span>Upload your file.</span>
+            <span class="workspace-title-accent">Edit and export with confidence.</span>
           </h2>
           <div class="workspace-promise">
-            <span class="promise-chip">Creative PDF Flow</span>
-            <p class="promise-copy">Move from rough file to polished export <span class="promise-strong">&mdash; clean, fast, and fully browser-based.</span></p>
-            <p>Move from rough file to polished export &mdash; clean, fast, and fully browser-based.</p>
+            <span class="promise-chip">XtreamPDF Flow</span>
+            <p class="promise-copy">Pick a tool, complete the task, and download the result <span class="promise-strong">&mdash; all inside one clean workspace.</span></p>
+            <p>Pick a tool, complete the task, and download the result &mdash; all inside one clean workspace.</p>
           </div>
         </div>
 
@@ -67,89 +148,27 @@
           </div>
         </div>
       </section>
-
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Next-gen PDF workspace</p>
-          <h1>XtreamPDF makes document editing feel sharp, fast, and effortless.</h1>
-          <p class="hero-text">
-            Edit, merge, split, convert, sign, and export PDFs in a bold browser-first workspace built to feel smoother than old-school utility sites.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#workspace">Launch XtreamPDF</a>
-            <a class="button button-secondary" href="#tools">Explore All Tools</a>
-          </div>
-          <div class="hero-stats" aria-label="Highlights">
-            <div>
-              <strong>20+</strong>
-              <span>PDF actions in one workspace</span>
-            </div>
-            <div>
-              <strong>Free</strong>
-              <span>No signup wall before editing</span>
-            </div>
-            <div>
-              <strong>Fast</strong>
-              <span>Built for instant browser workflows</span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-panel">
-          <div class="floating-card panel-main">
-            <p>Xtream Mode</p>
-            <h2>One stylish command center for your PDFs</h2>
-            <ul>
-              <li>Precision editing with a cleaner visual workspace</li>
-              <li>Page control for merge, split, reorder, and rotate</li>
-              <li>Brand-ready exports with text, watermark, and signature tools</li>
-              <li>Quick conversion across PDF, image, HTML, and Word formats</li>
-            </ul>
-          </div>
-          <div class="floating-card panel-accent">
-            <span>Signature Style</span>
-            <strong>Built to look premium while staying simple to use.</strong>
-          </div>
-        </div>
-      </section>
-
-      <section class="marquee">
-        <div class="marquee-track">
-          <span>Merge PDF</span>
-          <span>Split PDF</span>
-          <span>Reorder Pages</span>
-          <span>Rotate Pages</span>
-          <span>Watermark PDF</span>
-          <span>Page Numbers</span>
-          <span>Images to PDF</span>
-          <span>PDF to Images</span>
-          <span>Add Text</span>
-        </div>
-      </section>
-
-      <section class="catalog catalog-top" id="tools">
-        <div class="tool-grid" id="tool-grid"></div>
-      </section>
     </main>
 
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-brand">
-          <p class="footer-kicker">XtreamPDF</p>
-          <strong>Stylish PDF tools with an instant workflow.</strong>
-          <p>Edit, convert, and ship documents from one polished browser workspace.</p>
+          <img class="footer-logo" src="./logo.png" alt="XtreamPDF logo">
+          <strong>Clean browser-first PDF tools for real work.</strong>
+          <p>XtreamPDF brings editing, conversion, signing, and export into one simple professional interface.</p>
         </div>
         <div class="footer-nav-block">
           <p class="footer-nav-title">Quick Links</p>
           <nav class="footer-links" aria-label="Footer">
-            <a href="#workspace">Workspace</a>
+            <a href="#home">Home</a>
             <a href="#tools">Tools</a>
-            <a href="#features">Features</a>
+            <a href="#workspace">Workspace</a>
           </nav>
         </div>
       </div>
       <div class="footer-meta">
         <span>XtreamPDF</span>
-        <span>Fast, free, browser-first PDF tools</span>
+        <span>Simple and attractive PDF workflows</span>
       </div>
     </footer>
   </div>
