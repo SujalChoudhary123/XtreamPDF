@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FluxPDF Studio</title>
+  <meta
+    name="description"
+    content="A premium online PDF editor and document toolkit with merge, split, watermark, reorder, rotate, page numbers, image conversion, and more."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#home">
+        <span class="brand-mark">F</span>
+        <span>
+          <strong>FluxPDF</strong>
+          <small>Studio</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="#tools">Tools</a>
+        <a href="#workspace">Workspace</a>
+      </nav>
+      <a class="nav-cta" href="#workspace">Launch Editor</a>
+    </header>
+
+    <main id="home">
+      <section class="workspace" id="workspace">
+        <div class="section-heading">
+          <p class="eyebrow">Workspace</p>
+          <h2 class="workspace-title">
+            <span>No sign-ups.</span>
+            <span class="workspace-title-accent">No payments.</span>
+          </h2>
+          <div class="workspace-promise">
+            <span class="promise-chip">Free Forever</span>
+            <p class="promise-copy">Just upload, edit, and download <span class="promise-strong">&mdash; 100% free, forever.</span></p>
+            <p>Just upload, edit, and download — 100% free, forever.</p>
+          </div>
+        </div>
+
+        <aside class="tool-sidebar tool-sidebar-top tool-sidebar-horizontal">
+          <label>Active Tool</label>
+          <div id="tool-selector" class="tool-selector-bar" aria-label="Active Tool"></div>
+          <div class="tool-description" id="tool-description"></div>
+          <div class="tool-meta">
+            <span id="tool-status-badge" class="status-badge">Live</span>
+            <span id="tool-output"></span>
+          </div>
+        </aside>
+
+        <div class="workspace-layout">
+          <div class="editor-panel">
+            <form id="tool-form" class="tool-form"></form>
+            <div class="result-panel" id="result-panel">
+              <h3>Output</h3>
+              <p id="result-summary">Choose a tool and upload your files to generate an edited PDF or exported images.</p>
+              <div class="action-row" id="result-actions"></div>
+              <div id="result-preview" class="result-preview"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Online PDF editing platform</p>
+          <h1>All tools are 100% free, No Sign in, Only Editing.</h1>
+          <p class="hero-text">
+            Merge, split, rotate, reorder, watermark, number, annotate, and convert PDFs in a focused browser-first workspace.
+            No installation. No clutter. Just a premium document flow.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#workspace">Start Editing PDFs</a>
+            <a class="button button-secondary" href="#tools">Explore All Tools</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="floating-card panel-main">
+            <p>Studio Flow</p>
+            <h2>Edit PDFs in one place</h2>
+            <ul>
+              <li>Merge multiple PDFs</li>
+              <li>Extract or delete selected pages</li>
+              <li>Add text, watermarks, and page numbers</li>
+              <li>Convert images into polished PDFs</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="marquee">
+        <div class="marquee-track">
+          <span>Merge PDF</span>
+          <span>Split PDF</span>
+          <span>Reorder Pages</span>
+          <span>Rotate Pages</span>
+          <span>Watermark PDF</span>
+          <span>Page Numbers</span>
+          <span>Images to PDF</span>
+          <span>PDF to Images</span>
+          <span>Add Text</span>
+        </div>
+      </section>
+
+      <section class="catalog catalog-top" id="tools">
+        <div class="tool-grid" id="tool-grid"></div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <p class="footer-kicker">FluxPDF Studio</p>
+          <strong>Free PDF editing, built for speed.</strong>
+          <p>Upload, edit, and download your PDF tools in one clean browser workspace.</p>
+        </div>
+        <div class="footer-nav-block">
+          <p class="footer-nav-title">Quick Links</p>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="#workspace">Workspace</a>
+            <a href="#tools">Tools</a>
+            <a href="#features">Features</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <span>FluxPDF Studio</span>
+        <span>100% free PDF tools</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+  <script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
