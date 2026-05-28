@@ -78,24 +78,6 @@ XtreamPDF is currently in a practical prototype stage.
 * Add authentication and user accounts
 * Improve OCR and document processing
 
----
-
-# Files to Ignore in GitHub
-
-```text
-backend/.env
-backend/storage/
-backend/node_modules/
-mupdf-webviewer-react-sample/node_modules/
-```
-
----
-
-# License
-
-Add your preferred license before publishing publicly.
-
----
 
 # Author
 
