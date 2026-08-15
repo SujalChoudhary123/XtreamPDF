@@ -9,9 +9,10 @@
     content="XtreamPDF is a clean browser-based PDF editor for merging, splitting, converting, signing, and exporting documents."
   >
   <link rel="icon" type="image/png" href="./title_logo.png">
+  <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -20,26 +21,66 @@
       <a class="brand" href="#home" aria-label="XtreamPDF home">
         <img class="brand-logo" src="./logo.png" alt="XtreamPDF logo">
       </a>
+      <div class="header-search" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input
+          type="search"
+          id="tool-search"
+          placeholder="Search tools…"
+          aria-label="Search tools"
+          autocomplete="off"
+        >
+        <kbd aria-hidden="true">/</kbd>
+      </div>
       <nav class="nav" aria-label="Primary">
         <a href="#home">Home</a>
         <a href="#tools">Tools</a>
         <a href="#workspace">Workspace</a>
       </nav>
-      <a class="nav-cta" href="#workspace">Start Now</a>
+      <a class="nav-cta" href="#workspace">Start Now
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <span class="sr-only" id="search-count" role="status" aria-live="polite"></span>
     </header>
 
     <main id="home">
       <section class="hero">
-        <div class="hero-copy">
+        <div class="hero-inner">
           <h1>No sign-ups, no fees — built for everyone.</h1>
           <p class="hero-text">
             XtreamPDF helps you edit, merge, split, convert, sign, and export documents
             in a polished browser-first experience that matches your brand.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#workspace">Open Workspace</a>
+            <a class="button button-primary" href="#workspace">Upload PDF
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+            </a>
             <a class="button button-secondary" href="#tools">See All Tools</a>
           </div>
+
+          <div class="hero-upload" id="hero-upload" role="button" tabindex="0" aria-label="Upload a file to the workspace">
+            <svg class="hero-upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+            <strong class="hero-upload-title">Drag &amp; drop your PDF here</strong>
+            <span class="hero-upload-divider">or</span>
+            <span class="hero-upload-browse">Browse files</span>
+            <small class="hero-upload-hint">PDF, Word, images, HTML and text files supported</small>
+          </div>
+
+          <div class="hero-badges" aria-label="Why XtreamPDF">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              No sign-up required
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              Works in your browser
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              Free forever
+            </span>
+          </div>
+
           <div class="hero-stats" aria-label="Highlights">
             <div>
               <strong>20+</strong>
@@ -55,43 +96,37 @@
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="hero-preview">
-          <div class="preview-window">
-            <div class="preview-window-top">
-              <span class="preview-dot"></span>
-              <span class="preview-dot"></span>
-              <span class="preview-dot"></span>
-            </div>
-            <div class="preview-badge">
-              <img class="preview-logo" src="./logo.png" alt="XtreamPDF logo">
-            </div>
-            <div class="preview-list">
-              <div class="mini-card">
-                <strong>Merge & organize</strong>
-                <p>Combine, reorder, rotate, and manage pages with less friction.</p>
-              </div>
-              <div class="mini-card">
-                <strong>Edit & annotate</strong>
-                <p>Add text, signatures, watermarks, and clean export-ready changes.</p>
-              </div>
-              <div class="mini-card">
-                <strong>Convert & export</strong>
-                <p>Move between PDF, image, HTML, and Word workflows in one place.</p>
-              </div>
-            </div>
-          </div>
+      <section class="catalog" id="popular">
+        <div class="section-heading">
+          <p class="section-eyebrow">Popular</p>
+          <h2>Popular PDF Tools</h2>
+          <p class="section-subtitle">The tools people reach for every day — one click away.</p>
         </div>
+        <div class="tool-grid" id="popular-grid"></div>
       </section>
 
       <section class="catalog catalog-top" id="tools">
         <div class="section-heading">
-          <h2>Tools</h2>
+          <p class="section-eyebrow">All Tools</p>
+          <h2>All PDF Tools</h2>
+          <p class="section-subtitle">Everything you need to edit, organize, convert, optimize, and secure PDFs.</p>
         </div>
-        <div class="tool-grid" id="tool-grid"></div>
+        <div id="tool-grid"></div>
+        <div class="search-empty" id="search-empty" hidden>
+          <strong>No tools found</strong>
+          <p>Nothing matches your search. Try "merge", "compress", or "sign".</p>
+          <button class="button button-secondary" type="button" id="search-clear">Clear search</button>
+        </div>
       </section>
 
       <section class="workspace" id="workspace">
+        <div class="section-heading">
+          <p class="section-eyebrow">Workspace</p>
+          <h2>Workspace</h2>
+          <p class="section-subtitle">Pick a tool, upload your files, and download the result.</p>
+        </div>
         <aside class="tool-sidebar tool-sidebar-top tool-sidebar-horizontal">
           <label>Active Tool</label>
           <div id="tool-selector" class="tool-selector-bar" aria-label="Active Tool"></div>
@@ -124,8 +159,16 @@
           <p>XtreamPDF brings editing, conversion, signing, and export into one simple professional interface.</p>
         </div>
         <div class="footer-nav-block">
+          <p class="footer-nav-title">Tools</p>
+          <nav class="footer-links" aria-label="Tools">
+            <a href="#popular">Popular Tools</a>
+            <a href="#tools">All Tools</a>
+            <a href="#workspace">Workspace</a>
+          </nav>
+        </div>
+        <div class="footer-nav-block">
           <p class="footer-nav-title">Quick Links</p>
-          <nav class="footer-links" aria-label="Footer">
+          <nav class="footer-links" aria-label="Quick links">
             <a href="#home">Home</a>
             <a href="#tools">Tools</a>
             <a href="#workspace">Workspace</a>

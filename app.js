@@ -306,6 +306,45 @@ const toolRegistry = [
   }
 ];
 
+const POPULAR_TOOL_IDS = [
+  "merge",
+  "split",
+  "compress",
+  "pdf-editor",
+  "pdf-to-word",
+  "word-to-pdf",
+  "ocr",
+  "esign"
+];
+
+const TOOL_GROUPS = {
+  edit: {
+    title: "Edit PDFs",
+    description: "Modify, annotate, watermark, and reorder pages.",
+    tools: ["pdf-editor", "annotate", "delete", "rotate", "reorder", "watermark", "number", "extract"]
+  },
+  organize: {
+    title: "Organize PDFs",
+    description: "Merge, split, and compare documents.",
+    tools: ["merge", "split", "compare"]
+  },
+  convert: {
+    title: "Convert PDFs",
+    description: "Move between PDF, Word, HTML, and images.",
+    tools: ["pdf-to-word", "word-to-pdf", "html-to-pdf", "images-to-pdf", "pdf-to-images"]
+  },
+  optimize: {
+    title: "Optimize PDFs",
+    description: "Compress, run OCR, and scan documents.",
+    tools: ["compress", "ocr", "scan"]
+  },
+  security: {
+    title: "Security",
+    description: "Protect, unlock, and sign your PDFs.",
+    tools: ["protect", "unlock", "esign"]
+  }
+};
+
 const state = {
   currentTool: toolRegistry[0].id,
   downloadUrl: null,
@@ -314,7 +353,38 @@ const state = {
   editorTool: "select"
 };
 
+const TOOL_ICONS = {
+  "pdf-editor": '<path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/>',
+  merge: '<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+  split: '<path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M21 3l-7.5 7.5"/><path d="M3 3l7.5 7.5"/><path d="M21 21l-7.5-7.5"/><path d="M3 21l7.5-7.5"/>',
+  extract: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
+  delete: '<path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/>',
+  rotate: '<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>',
+  reorder: '<path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/>',
+  watermark: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+  number: '<path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M16 3l-2 18"/>',
+  annotate: '<path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/>',
+  "images-to-pdf": '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>',
+  "pdf-to-images": '<path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="M8 2h10a2 2 0 0 1 2 2v10"/><circle cx="14" cy="13" r="2"/>',
+  compress: '<path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="M14 10l7-7"/><path d="M3 21l7-7"/>',
+  unlock: '<path d="M7 11V7a5 5 0 0 1 9.9-1"/><rect x="3" y="11" width="18" height="11" rx="2"/>',
+  protect: '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  ocr: '<path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 8h8"/><path d="M7 12h10"/><path d="M7 16h6"/>',
+  esign: '<path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/>',
+  "html-to-pdf": '<path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/>',
+  "pdf-to-word": '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+  "word-to-pdf": '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/>',
+  scan: '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
+  compare: '<path d="M20 7h-3a2 2 0 0 1-2-2V2"/><path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"/><path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"/>'
+};
+
+function toolIconMarkup(toolId) {
+  const paths = TOOL_ICONS[toolId] || "";
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+}
+
 const grid = document.querySelector("#tool-grid");
+const popularGrid = document.querySelector("#popular-grid");
 const toolSelector = document.querySelector("#tool-selector");
 const toolDescription = document.querySelector("#tool-description");
 const toolStatusBadge = document.querySelector("#tool-status-badge");
@@ -332,11 +402,18 @@ function bootstrap() {
   renderCatalog();
   renderToolSelector();
   renderActiveTool();
+  initSearch();
+  initHeroUpload();
 }
 
-function renderCatalog() {
-  grid.innerHTML = toolRegistry.map((tool) => `
+function toolCardMarkup(toolId) {
+  const tool = toolRegistry.find((entry) => entry.id === toolId);
+  if (!tool) {
+    return "";
+  }
+  return `
     <button class="tool-card" type="button" data-tool-id="${tool.id}" aria-label="Open ${tool.name}">
+      <span class="tool-card-icon">${toolIconMarkup(tool.id)}</span>
       <div class="tool-chip-row">
         <span class="chip">${tool.category}</span>
         <span class="${tool.status === "live" ? "chip status-live" : "chip status-roadmap"}">${tool.status === "live" ? "Live now" : "Roadmap ready"}</span>
@@ -347,9 +424,11 @@ function renderCatalog() {
         <span class="chip">${tool.output}</span>
       </div>
     </button>
-  `).join("");
+  `;
+}
 
-  [...grid.querySelectorAll(".tool-card[data-tool-id]")].forEach((card) => {
+function wireToolCards(root) {
+  [...root.querySelectorAll(".tool-card[data-tool-id]")].forEach((card) => {
     card.addEventListener("click", () => {
       const { toolId } = card.dataset;
       if (!toolId) {
@@ -359,6 +438,165 @@ function renderCatalog() {
       renderActiveTool();
       workspaceSection?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+  });
+}
+
+function renderCatalog() {
+  if (popularGrid) {
+    popularGrid.innerHTML = POPULAR_TOOL_IDS.map(toolCardMarkup).join("");
+    wireToolCards(popularGrid);
+  }
+
+  grid.innerHTML = Object.values(TOOL_GROUPS)
+    .map((group) => `
+      <section class="catalog-section">
+        <div class="catalog-section-heading">
+          <h3>${group.title}</h3>
+          <p>${group.description}</p>
+        </div>
+        <div class="tool-grid">${group.tools.map(toolCardMarkup).join("")}</div>
+      </section>
+    `)
+    .join("");
+  wireToolCards(grid);
+}
+
+function initSearch() {
+  const input = document.querySelector("#tool-search");
+  const emptyState = document.querySelector("#search-empty");
+  const clearButton = document.querySelector("#search-clear");
+  const liveRegion = document.querySelector("#search-count");
+  if (!input) {
+    return;
+  }
+
+  const allCards = () => [...document.querySelectorAll(".tool-card[data-tool-id]")];
+  const visibleCards = () => allCards().filter((card) => !card.classList.contains("is-hidden"));
+
+  const applyFilter = () => {
+    const query = input.value.trim().toLowerCase();
+    let visible = 0;
+
+    allCards().forEach((card) => {
+      const tool = toolRegistry.find((entry) => entry.id === card.dataset.toolId);
+      const haystack = [tool?.name, tool?.description, tool?.category, tool?.output]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      const matches = !query || haystack.includes(query);
+      card.classList.toggle("is-hidden", !matches);
+      card.classList.toggle("is-highlighted", matches && Boolean(query));
+      if (matches) {
+        visible += 1;
+      }
+    });
+
+    [...grid.querySelectorAll(".catalog-section")].forEach((section) => {
+      const hasVisible = [...section.querySelectorAll(".tool-card")].some(
+        (card) => !card.classList.contains("is-hidden")
+      );
+      section.hidden = !hasVisible;
+    });
+
+    if (emptyState) {
+      emptyState.hidden = visible > 0 || !query;
+    }
+    if (liveRegion) {
+      liveRegion.textContent = query ? `${visible} tool${visible === 1 ? "" : "s"} found` : "";
+    }
+  };
+
+  input.addEventListener("input", applyFilter);
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const first = visibleCards()[0];
+      if (first) {
+        first.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  });
+
+  if (clearButton) {
+    clearButton.addEventListener("click", () => {
+      input.value = "";
+      applyFilter();
+      input.focus();
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    const tag = document.activeElement?.tagName || "";
+    if (event.key === "/" && !/^(INPUT|TEXTAREA|SELECT)$/i.test(tag)) {
+      event.preventDefault();
+      input.focus();
+      input.select();
+    }
+    if (event.key === "Escape" && document.activeElement === input) {
+      input.value = "";
+      applyFilter();
+      input.blur();
+    }
+  });
+}
+
+function initHeroUpload() {
+  const zone = document.querySelector("#hero-upload");
+  if (!zone) {
+    return;
+  }
+
+  const workspaceFileInput = () => toolForm?.querySelector('input[type="file"]');
+
+  const revealWorkspace = () => {
+    workspaceSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const openWorkspaceDialog = () => {
+    revealWorkspace();
+    requestAnimationFrame(() => workspaceFileInput()?.click());
+  };
+
+  zone.addEventListener("click", (event) => {
+    event.preventDefault();
+    openWorkspaceDialog();
+  });
+
+  zone.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openWorkspaceDialog();
+    }
+  });
+
+  ["dragenter", "dragover"].forEach((type) => {
+    zone.addEventListener(type, (event) => {
+      event.preventDefault();
+      zone.classList.add("is-dragging");
+    });
+  });
+
+  ["dragleave", "drop"].forEach((type) => {
+    zone.addEventListener(type, (event) => {
+      event.preventDefault();
+      zone.classList.remove("is-dragging");
+    });
+  });
+
+  zone.addEventListener("drop", (event) => {
+    const files = event.dataTransfer?.files;
+    if (!files?.length) {
+      return;
+    }
+    const input = workspaceFileInput();
+    if (!input) {
+      revealWorkspace();
+      return;
+    }
+    input.files = files;
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+    revealWorkspace();
   });
 }
 
@@ -398,6 +636,11 @@ function renderActiveTool() {
   [...grid.querySelectorAll(".tool-card[data-tool-id]")].forEach((card) => {
     card.classList.toggle("is-selected", card.dataset.toolId === tool.id);
   });
+  if (popularGrid) {
+    [...popularGrid.querySelectorAll(".tool-card[data-tool-id]")].forEach((card) => {
+      card.classList.toggle("is-selected", card.dataset.toolId === tool.id);
+    });
+  }
   toolDescription.textContent = tool.description;
   toolStatusBadge.textContent = tool.status === "live" ? "Live in Browser" : "Roadmap Integration";
   toolStatusBadge.className = `status-badge ${tool.status === "live" ? "status-live" : "status-roadmap"}`;
@@ -422,8 +665,63 @@ function renderActiveTool() {
   `;
 
   enhanceCustomSelects(toolForm);
+  enhanceFileInputs(toolForm);
   toolForm.onsubmit = handleSubmit;
   document.querySelector("#reset-form").addEventListener("click", () => renderActiveTool());
+}
+
+function enhanceFileInputs(root) {
+  root.querySelectorAll('input[type="file"]').forEach((input) => {
+    const field = input.closest(".field") || input.parentElement;
+    if (!field || field.dataset.dropEnhanced === "true") {
+      return;
+    }
+    field.dataset.dropEnhanced = "true";
+
+    const updateFileMeta = () => {
+      const files = input.files;
+      const count = files ? files.length : 0;
+      const existing = field.querySelector(".file-meta");
+      if (!count) {
+        existing?.remove();
+        return;
+      }
+      if (!existing) {
+        const meta = document.createElement("span");
+        meta.className = "file-meta";
+        meta.textContent = count > 1 ? `${count} files selected` : files[0].name;
+        field.appendChild(meta);
+        return;
+      }
+      existing.textContent = count > 1 ? `${count} files selected` : files[0].name;
+    };
+
+    input.addEventListener("change", updateFileMeta);
+
+    ["dragenter", "dragover"].forEach((type) => {
+      field.addEventListener(type, (event) => {
+        event.preventDefault();
+        field.classList.add("is-dragging");
+      });
+    });
+
+    ["dragleave", "drop"].forEach((type) => {
+      field.addEventListener(type, (event) => {
+        event.preventDefault();
+        field.classList.remove("is-dragging");
+      });
+    });
+
+    field.addEventListener("drop", (event) => {
+      const dropped = event.dataTransfer?.files;
+      if (dropped?.length) {
+        input.files = dropped;
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+
+    updateFileMeta();
+  });
 }
 
 function renderField(field) {
@@ -2723,6 +3021,8 @@ function hexToRgb(hex) {
 function setResult(message, actions = []) {
   resultSummary.textContent = message;
   resultSummary.style.display = message ? "" : "none";
+  const processing = typeof message === "string" && message.trim().startsWith("Processing");
+  resultPanel.classList.toggle("is-processing", processing);
   resultActions.innerHTML = "";
   resultPreview.innerHTML = "";
   actions.forEach((action) => {
